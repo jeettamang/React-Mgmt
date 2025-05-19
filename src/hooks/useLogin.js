@@ -13,7 +13,7 @@ const useLogin = () => {
   const [msg, setMsg] = useState("");
   const [err, setErr] = useState("");
 
-  const handleSubmit = async () => {
+  const handleSubmit = async ({payload}) => {
     try {
       setIsLoading(true);
       setIsDisabled(true);

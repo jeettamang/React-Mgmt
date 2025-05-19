@@ -1,10 +1,10 @@
 import "./Error.css";
-import { Link } from "react-router";
+import { Link } from "react-router-dom"; 
 import { BsExclamationCircleFill } from "react-icons/bs";
 import PropTypes from "prop-types"
 
 
-const Error = ({Link="/"}) => {
+const Error = ({ backLink = "/" }) => {
   return (
     <>
       <section className="py-3 py-md-5 min-vh-100 d-flex justify-content-center align-items-center">
@@ -24,7 +24,7 @@ const Error = ({Link="/"}) => {
                 </p>
                 <Link
                   className="btn bsb-btn-5xl btn-dark rounded-pill px-5 fs-6 m-0"
-                  to="/"
+                  to={backLink}
                   role="button"
                 >
                   Back to Home
@@ -40,5 +40,6 @@ const Error = ({Link="/"}) => {
 Error.displayName="Error";
 Error.PropTypes={
   Link: PropTypes.string,
+  backLink: PropTypes.string,
 }
 export default Error;

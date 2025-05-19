@@ -20,7 +20,7 @@ const Login = () => {
             className="img-fluid rounded"
             style={{ maxWidth: "200px" }}
           />
-          <p className="text-center mt-3 mb-2">Sign in to your account</p>
+          <p className="text-center mt-3 mb-2">Login to your account</p>
           <div className="text-center mt-3 mb-2">
             {err && <AlertBox label={err} />}
             {msg && <AlertBox variant="success" label={msg} />}
@@ -89,7 +89,7 @@ const Login = () => {
                 label="Submit"
                 loading={isLoading}
                 disabled={isDisabled}
-                onClick={() => handleSubmit()}
+                onClick={() => handleSubmit({payload})}
               />
             </div>
             <div className="d-flex justify-content-center align-items-center gap-2">

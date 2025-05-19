@@ -1,14 +1,25 @@
+// External libraries
 import { Routes, Route } from "react-router";
-import AdminDashboard from "./pages/admin/Dashboard";
+
+// Layouts
 import AdminLayout from "./layouts/AdminLayout";
 import AppLayout from "./layouts/AppLayout";
 
+// Pages
 import ErrorPage from "./pages/Error";
 import Home from "./pages/Home";
+
+// Auth Pages
+import EmailVerification from "./pages/auth/EmailVerification";
+import ForgetPassword from "./pages/auth/ForgetPassword";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
-import UserList from "./pages/admin/users/List";
+
+// Admin Pages
+import AdminDashboard from "./pages/admin/Dashboard";
 import UserEdit from "./pages/admin/users/Edit";
+import UserList from "./pages/admin/users/List";
+
 
 const App = () => {
   return (
@@ -20,7 +31,8 @@ const App = () => {
 
       <Route path="/auth">
         <Route index element={<Login />} />
-        <Route path="forgot-password" element={<Login />} />
+        <Route path="email-verify" element={<EmailVerification />} />
+        <Route path="forgot-password" element={<ForgetPassword />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Route>
