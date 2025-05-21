@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import instance from "../utils/axios";
 import { URLS } from "../constants";
@@ -15,7 +15,8 @@ const useRegister = (registerRef) => {
     try {
       setIsDisabled(true);
       setErr("");
-      setMsg("")
+      setMsg("");
+
       const rawData = registerRef.current;
       const formData = new FormData(rawData);
 
@@ -33,16 +34,26 @@ const useRegister = (registerRef) => {
       setMsg(data?.message);
       setTimeout(() => {
         setMsg("");
-        navigate("/auth/email-verify");
+        navigate("/auth/email-verify", { state: { email: formData.get("email") } });
       }, 2000);
     } catch (error) {
-      const err = error?.response?.data?.msg || "Something went wrong";
-      setErr(errorParser(err));
+      console.error("REGISTER ERROR", error?.response?.data);
+      const backendError = error?.response?.data;
+
+      if (backendError?.validation) {
+        // Show first validation error
+        const firstError = Object.values(backendError.validation)[0];
+        setErr(firstError);
+      } else if (backendError?.message) {
+        setErr(backendError.message);
+      } else {
+        setErr("Something went wrong.");
+      }
     } finally {
       setIsDisabled(false);
-      setMsg("")
     }
   };
+
   return { err, setErr, msg, setMsg, handleSubmit, isDisabled };
 };
 

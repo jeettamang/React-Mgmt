@@ -1,6 +1,6 @@
 import { Button, Form } from "react-bootstrap";
 import { useRef } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import AlertBox from "../../components/AlertBox";
 import useRegister from "../../hooks/useRegister";
 

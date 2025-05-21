@@ -19,6 +19,7 @@ import Register from "./pages/auth/Register";
 import AdminDashboard from "./pages/admin/Dashboard";
 import UserEdit from "./pages/admin/users/Edit";
 import UserList from "./pages/admin/users/List";
+import VerifyForgetPassword from "./pages/auth/VerifyForgetPassword";
 
 
 const App = () => {
@@ -32,7 +33,8 @@ const App = () => {
       <Route path="/auth">
         <Route index element={<Login />} />
         <Route path="email-verify" element={<EmailVerification />} />
-        <Route path="forgot-password" element={<ForgetPassword />} />
+        <Route path="forget-password" element={<ForgetPassword />} />
+         <Route path="forget-password/verify" element={<VerifyForgetPassword/>} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Route>
